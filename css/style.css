@@ -13,7 +13,7 @@
     --hover-border: rgba(255, 255, 255, 0.9); /* White Outline on Hover */
     
     /* Accents - Very Muted */
-    --accent-blue: #007aff; 
+    --accent-neon: #d9ff00; 
     --success: #22c55e;
     --danger: #ef4444;
 }
@@ -44,7 +44,15 @@ body {
     padding: 0 40px;
 }
 
+section {
+    scroll-margin-top: 100px; /* Sesuaikan dengan tinggi navbar Anda */
+}
+
 /* --- Subtle Background Aura --- */
+.logo span {
+    color: var(--accent-blue);
+}
+
 .blob-bg {
     position: fixed;
     border-radius: 50%;
@@ -53,7 +61,16 @@ body {
     opacity: 0.03; /* Sangat tipis agar tidak mengganggu mata */
 }
 .blob-1 { width: 600px; height: 600px; background: white; top: -10%; right: -5%; }
-.blob-2 { width: 500px; height: 500px; background: var(--accent-blue); bottom: -5%; left: -5%; }
+.blob-2 { 
+    background: var(--accent-neon); 
+    opacity: 0.02; /* Dikecilkan opasitasnya karena warnanya sangat terang */
+}
+.blob-3 { width: 300px; height: 300px; background: var(--accent-neon); top: 30%; left: 40%; opacity: 0.1; }
+
+.filter-btn.active {
+    background: var(--accent-neon);
+    color: #000; /* Teks hitam agar terbaca di atas warna terang */
+}
 
 /* --- Navigation --- */
 nav {
@@ -80,40 +97,45 @@ nav {
 }
 
 .logo span {
-    color: var(--text-muted);
+    color: var(--accent-neon);
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 40px;
+    gap: 32px; /* Jarak antar menu yang lebih lega */
     align-items: center;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-muted);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    font-size: 0.85rem; /* Ukuran font sedikit lebih kecil agar elegan */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--text-pure);
 }
 
-/* --- Glass Component Core --- */
-.glass-card {
-    background: var(--glass-fill);
+.btn-glass {
+    background: transparent;
     border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 32px;
-    transition: border-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: var(--text-pure) !important;
+    font-size: 0.8rem !important;
+    transition: all 0.3s ease;
 }
 
-.glass-card:hover {
-    border-color: var(--hover-border); /* Hanya outline putih tegas */
+.btn-glass:hover {
+    border-color: var(--hover-border); /* Menggunakan variabel outline putih Anda */
+    background: rgba(255, 255, 255, 0.05);
 }
+
 
 /* --- Hero Section --- */
 .hero {
@@ -130,7 +152,7 @@ nav {
 }
 
 .text-gradient {
-    background: linear-gradient(180deg, #fff 0%, #444 100%);
+    background: var(--accent-neon);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -199,7 +221,7 @@ nav {
 }
 
 .coin-id { display: flex; align-items: center; gap: 16px; }
-.coin-id img { width: 36px; height: 36px; filter: grayscale(0.2); }
+.coin-id img { width: 36px; height: 36px; }
 .coin-id h4 { font-weight: 700; font-size: 1.1rem; }
 .coin-id span { color: var(--text-muted); font-size: 0.8rem; display: block; }
 
@@ -268,29 +290,50 @@ nav {
     height: 400px;
 }
 
-/* --- Partners --- */
-.partners {
+/* --- Harmonized Brand Sections (Partners & Audit) --- */
+.partners, .security-audit {
     text-align: center;
-    padding: 60px 0;
+    padding: 100px 0;
     border-top: 1px solid var(--glass-border);
 }
 
-.partners p {
-    font-size: 0.7rem;
+.partners p, .security-audit p {
+    font-size: 0.75rem;
     letter-spacing: 2px;
     color: var(--text-muted);
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
 }
 
-.partner-logos {
+.partner-logos, .audit-logos {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 80px;
-    filter: grayscale(1) invert(1);
-    opacity: 0.4;
+    flex-wrap: wrap;
 }
 
-.partner-logos img { height: 24px; }
+/* Base style for text-based logos */
+.partner-logos img, .audit-logos img {
+    height: 22px; /* Dikecilkan untuk keseimbangan visual */
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Logo menjadi putih bersih */
+    opacity: 0.3;
+    transition: all 0.4s ease;
+}
+
+/* Special adjustment for circular/square logos (Bitcoin, Certik) */
+/* Tambahkan class logo-sm di HTML Anda pada logo BTC dan Certik */
+.partner-logos img.logo-sm, 
+.audit-logos img.logo-sm {
+    height: 38px; 
+}
+
+.partner-logos img:hover, .audit-logos img:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
 
 /* --- Features Section --- */
 .features { padding: 120px 0; }
@@ -299,7 +342,7 @@ nav {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
 }
 
@@ -339,24 +382,36 @@ th { font-weight: 700; color: var(--text-pure); text-transform: uppercase; font-
 td { font-size: 0.95rem; color: var(--text-muted); }
 td:nth-child(2) { color: var(--text-pure); font-weight: 600; }
 
-/* --- Security Audit --- */
-.security-audit { text-align: center; padding: 100px 0; }
-.security-audit p { font-size: 0.7rem; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 32px; }
-.audit-logos {
-    display: flex;
-    justify-content: center;
+/* Gaya dasar untuk setiap status */
+.status-pill {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
     align-items: center;
-    gap: 60px;
-    opacity: 0.4;
-    filter: grayscale(1);
+    gap: 8px;
 }
-.audit-logos img { height: 30px; }
-.audit-logos span { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; }
 
-/* Responsive Table */
-@media (max-width: 768px) {
-    .stats-flex { flex-direction: column; gap: 40px; }
-    th, td { padding: 16px; font-size: 0.8rem; }
+/* Status Checklist (Hijau) */
+.status-pill.success {
+    background: rgba(34, 197, 94, 0.15); /* Hijau transparan */
+    color: #4ade80; /* Hijau terang */
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+/* Status Silang (Merah) */
+.status-pill.error {
+    background: rgba(239, 68, 68, 0.15); /* Merah transparan */
+    color: #f87171; /* Merah terang */
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Status Danger/Warning (Kuning) */
+.status-pill.warning {
+    background: rgba(234, 179, 8, 0.15); /* Kuning transparan */
+    color: #fbbf24; /* Kuning terang */
+    border: 1px solid rgba(234, 179, 8, 0.2);
 }
 
 /* --- Roadmap Styles --- */
@@ -385,22 +440,80 @@ td:nth-child(2) { color: var(--text-pure); font-weight: 600; }
 
 /* --- Testimonials Styles --- */
 .testimonials { padding: 120px 0; }
-.testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.t-card p { font-style: italic; color: var(--text-pure); margin-bottom: 24px; font-size: 1.1rem; }
+.testimonial-grid {
+    display: grid;
+    /* Menggunakan minmax 300px agar 4 kartu muat dengan proporsional */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 24px;
+    border: white;
+}
+.t-card {
+padding: 40px; /* Menambah jarak internal agar tidak mepet border */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 250px; /* Menambah tinggi minimal agar kartu lebih proporsional */
+    transition: all 0.4s ease;
+}
+
+.t-card:hover {
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.t-card p {
+font-style: italic;
+    color: var(--text-pure);
+    margin-bottom: 32px; /* Memberikan jarak lebih antara kutipan dan nama user */
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
 .user-meta strong { display: block; font-size: 0.9rem; }
 .user-meta span { font-size: 0.8rem; color: var(--text-muted); }
 
 /* --- FAQ Styles --- */
 .faq { padding: 120px 0; }
-.faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antar kartu FAQ */
+}
 .faq-item { padding: 20px 32px; cursor: pointer; }
-.faq-item summary { list-style: none; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; }
-.faq-item summary::after { content: '+'; font-size: 1.5rem; color: var(--text-muted); }
-.faq-item[open] summary::after { content: '−'; }
-.faq-item p { margin-top: 20px; color: var(--text-muted); line-height: 1.6; }
+.faq-item summary {
+    list-style: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    outline: none;
+}
+.faq-item summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+.faq-item[open] summary::after {
+    content: '−';
+    transform: rotate(180deg);
+}
+.faq-item p {
+    margin-top: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 15px;
+}
 
-/* --- Hover Consistency --- */
-.faq-item:hover, .pricing-card:hover { border-color: var(--hover-border); }
+/* Hover consistency for interactive elements */
+.faq-item:hover, .t-card:hover, table tr:hover { border-color: var(--hover-border); }
 
 /* --- CTA Section --- */
 .cta { padding: 100px 0 160px; }
@@ -431,7 +544,11 @@ footer {
     font-size: 0.9rem;
 }
 
-.footer-links { display: flex; gap: 100px; }
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Membagi menjadi 4 kolom yang sama rata */
+    gap: 40px; /* Jarak antar kolom */
+}
 .link-group h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
 .link-group a {
     display: block;
@@ -452,14 +569,17 @@ footer {
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 1024px) {
-    .features-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 3.5rem; }
     .footer-links { gap: 40px; }
+    .partner-logos, .audit-logos { gap: 40px; }
 }
 
 @media (max-width: 768px) {
+    .container { padding: 0 20px; }
     .hero h1 { font-size: 2.5rem; }
     .nav-links { display: none; }
+    .stats-flex { flex-direction: column; gap: 40px; }
     .main-chart-wrapper { height: 300px; }
     .footer-content { flex-direction: column; gap: 60px; }
+    th, td { padding: 16px; font-size: 0.8rem; }
 }
