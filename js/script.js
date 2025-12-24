@@ -310,3 +310,10 @@ const MOCK_DATA = [
     { id: 'tron', name: "TRON", symbol: "trx", current_price: 0.12, price_change_percentage_24h: 0.5, market_cap: 11000000000, image: "https://assets.coingecko.com/coins/images/1094/large/tron.png" },
     { id: 'chainlink', name: "Chainlink", symbol: "link", current_price: 14.50, price_change_percentage_24h: -1.8, market_cap: 8500000000, image: "https://assets.coingecko.com/coins/images/877/large/chainlink.png" }
 ];
+
+// --- SERVICE WORKER REGISTRATION ---
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then(() => console.log('Service Worker Registered'))
+    .catch(err => console.log('Service Worker Failed', err));
+}
