@@ -1,0 +1,24 @@
+{
+  "name": "CryptoVisual - Pro Crypto Dashboard",
+  "short_name": "CryptoVisual",
+  "description": "Monitor real-time market trends with our advanced analytical dashboard.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#d9ff00",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
