@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 
 <body>
@@ -28,9 +30,11 @@
         </div>
 
         <ul class="nav-links" id="nav-list">
+            <li><a href="#portfolio">Portfolio</a></li> 
             <li><a href="#market">Market</a></li>
             <li><a href="#features">Fitur</a></li>
             <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#testimonials">Komunitas</a></li> 
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#connect" class="btn-glass">Hubungkan Dompet</a></li>
         </ul>
@@ -46,6 +50,19 @@
                 <a href="#features" class="btn-outline">Pelajari Fitur</a>
             </div>
         </section>
+
+        <div class="currency-switcher">
+            <button class="currency-btn active" data-currency="usd">USD</button>
+            <button class="currency-btn" data-currency="idr">IDR</button>
+        </div>
+
+        <div id="portfolio" class="glass-card portfolio-summary">
+            <div class="portfolio-info">
+                <p>Your Portfolio Balance</p>
+                <h2 id="total-balance">Rp 0</h2>
+            </div>
+            <button class="btn-primary" onclick="togglePortfolioModal()">+ Add Asset</button>
+        </div>
 
         <section id="market" class="stats-grid">
             <div class="glass-card">
@@ -94,19 +111,57 @@
             </div>
         </section>
 
-        <section class="main-dashboard glass-card">
+        <div class="main-dashboard glass-card">
             <div class="dashboard-header">
-                <h3>Analisis Performa <span class="text-gradient">Live</span></h3>
-                <div class="time-filters">
+                <h2>Analisis Performa <span class="accent">Live</span></h2>
+                <div class="chart-filters">
                     <button class="filter-btn active">1H</button>
                     <button class="filter-btn">1D</button>
                     <button class="filter-btn">1W</button>
                 </div>
             </div>
+        
             <div class="main-chart-wrapper">
                 <canvas id="mainChart"></canvas>
             </div>
-        </section>
+        
+            <div class="market-table-container">
+                <div class="table-header">
+                    <h3>Top Assets by Market Cap</h3>
+                    <div class="search-box">
+                        <input type="text" id="coin-search" placeholder="Search coin (e.g. BTC)...">
+                    </div>
+                </div>
+                
+                <div class="comparison-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Price</th>
+                                <th>24h Change</th>
+                                <th>Market Cap</th>
+                            </tr>
+                        </thead>
+                        <tbody id="market-table-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+            <nav class="pagination-controls" aria-label="Navigasi halaman aset">
+    <button id="prev-page" class="btn-pagination" disabled aria-label="Halaman Sebelumnya">
+        <span class="icon">←</span> Previous
+    </button>
+
+    <div class="page-info">
+        Halaman <span id="current-page-display">1</span>
+    </div>
+
+    <button id="next-page" class="btn-pagination" aria-label="Halaman Selanjutnya">
+        Next <span class="icon">→</span>
+    </button>
+</nav>
+        </div>
 
         <section class="partners">
             <p>TRUSTED BY GLOBAL LEADERS</p>
@@ -446,6 +501,32 @@
             <p>&copy; 2025 CryptoVisual. All rights reserved.</p>
         </div>
     </footer>
+
+    <div id="portfolio-modal" class="modal-overlay">
+        <div class="glass-card modal-content">
+            <h3>Add New Asset</h3>
+            <p>Select coin and enter the amount you own.</p>
+            
+            <div class="input-group">
+                <label>Select Coin</label>
+                <select id="coin-select">
+                    <option value="bitcoin">Bitcoin (BTC)</option>
+                    <option value="ethereum">Ethereum (ETH)</option>
+                    <option value="solana">Solana (SOL)</option>
+                </select>
+            </div>
+        
+            <div class="input-group">
+                <label>Amount</label>
+                <input type="number" id="coin-amount" placeholder="0.00" step="any">
+            </div>
+        
+            <div class="modal-btns">
+                <button class="btn-outline" onclick="togglePortfolioModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveAsset()">Save Asset</button>
+            </div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
