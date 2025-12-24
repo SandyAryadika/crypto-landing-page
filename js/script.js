@@ -1,3 +1,30 @@
+// --- Mobile Menu Logic ---
+const menuToggle = document.getElementById('mobile-menu');
+const navList = document.getElementById('nav-list');
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        navList.classList.toggle('active');
+        
+        // Animasi bar menjadi "X"
+        const bars = menuToggle.querySelectorAll('.bar');
+        bars[0].style.transform = navList.classList.contains('active') ? 'rotate(45deg) translate(5px, 6px)' : 'none';
+        bars[1].style.opacity = navList.classList.contains('active') ? '0' : '1';
+        bars[2].style.transform = navList.classList.contains('active') ? 'rotate(-45deg) translate(5px, -6px)' : 'none';
+    });
+}
+
+// Tutup menu otomatis saat link diklik
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navList.classList.remove('active');
+        // Reset animasi bar
+        const bars = menuToggle.querySelectorAll('.bar');
+        bars.forEach(bar => bar.style.transform = 'none');
+        bars[1].style.opacity = '1';
+    });
+});
+
 // Mengambil Data Harga Real-Time
 async function updatePrices() {
     try {

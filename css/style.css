@@ -1,28 +1,35 @@
 /* CryptoVisual - Premium Web3 Stylesheet
     Designed for: Minimalism, Luxury, and High-End Professionalism.
+    Author: CryptoVisual Team
+    Version: 1.0.0
 */
 
+/* --- 1. Variables & Global Settings --- */
 :root {
     /* Color Palette - Monochrome Luxury */
     --bg-deep: #050505;
     --bg-soft: #0a0a0c;
     --text-pure: #ffffff;
     --text-muted: #88888b;
+
+    /* Glassmorphism Styles */
     --glass-fill: rgba(255, 255, 255, 0.02);
     --glass-border: rgba(255, 255, 255, 0.08);
     --hover-border: rgba(255, 255, 255, 0.9); /* White Outline on Hover */
-    
-    /* Accents - Very Muted */
-    --accent-neon: #d9ff00; 
+
+    /* Theme Accents */
+    --accent-neon: #d9ff00;
     --success: #22c55e;
     --danger: #ef4444;
 }
 
-/* --- Base & Reset --- */
+/* --- 2. Base Reset --- */
 * {
+    max-width: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    word-wrap: break-word;
 }
 
 html {
@@ -45,34 +52,41 @@ body {
 }
 
 section {
-    scroll-margin-top: 100px; /* Sesuaikan dengan tinggi navbar Anda */
+    scroll-margin-top: 100px;
 }
 
-/* --- Subtle Background Aura --- */
-.logo span {
-    color: var(--accent-blue);
-}
-
+/* --- 3. Background Visual Effects --- */
 .blob-bg {
     position: fixed;
     border-radius: 50%;
     filter: blur(160px);
     z-index: -1;
-    opacity: 0.03; /* Sangat tipis agar tidak mengganggu mata */
+    opacity: 0.03;
 }
-.blob-1 { width: 600px; height: 600px; background: white; top: -10%; right: -5%; }
-.blob-2 { 
-    background: var(--accent-neon); 
-    opacity: 0.02; /* Dikecilkan opasitasnya karena warnanya sangat terang */
-}
-.blob-3 { width: 300px; height: 300px; background: var(--accent-neon); top: 30%; left: 40%; opacity: 0.1; }
 
-.filter-btn.active {
+.blob-1 {
+    width: 600px;
+    height: 600px;
+    background: white;
+    top: -10%;
+    right: -5%;
+}
+
+.blob-2 {
     background: var(--accent-neon);
-    color: #000; /* Teks hitam agar terbaca di atas warna terang */
+    opacity: 0.02;
 }
 
-/* --- Navigation --- */
+.blob-3 {
+    width: 300px;
+    height: 300px;
+    background: var(--accent-neon);
+    top: 30%;
+    left: 40%;
+    opacity: 0.1;
+}
+
+/* --- 4. Navigation --- */
 nav {
     position: sticky;
     top: 0;
@@ -103,14 +117,14 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 32px; /* Jarak antar menu yang lebih lega */
+    gap: 32px;
     align-items: center;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-muted);
-    font-size: 0.85rem; /* Ukuran font sedikit lebih kecil agar elegan */
+    font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -121,33 +135,17 @@ nav {
     color: var(--text-pure);
 }
 
-.btn-glass {
-    background: transparent;
-    border: 1px solid var(--glass-border);
-    padding: 10px 20px;
-    border-radius: 8px;
-    color: var(--text-pure) !important;
-    font-size: 0.8rem !important;
-    transition: all 0.3s ease;
-}
-
-.btn-glass:hover {
-    border-color: var(--hover-border); /* Menggunakan variabel outline putih Anda */
-    background: rgba(255, 255, 255, 0.05);
-}
-
-
-/* --- Hero Section --- */
+/* --- 5. Hero Section --- */
 .hero {
     padding: 140px 0 100px;
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 5rem;
+    font-size: clamp(2rem, 8vw, 5rem);
     font-weight: 800;
     letter-spacing: -3px;
-    line-height: 1;
+    line-height: 1.1;
     margin-bottom: 24px;
 }
 
@@ -171,7 +169,7 @@ nav {
     gap: 16px;
 }
 
-/* --- Buttons --- */
+/* --- 6. Buttons & Interactive Elements --- */
 .btn-primary {
     background: var(--text-pure);
     color: var(--bg-deep);
@@ -187,7 +185,8 @@ nav {
     opacity: 0.85;
 }
 
-.btn-outline, .btn-glass {
+.btn-outline,
+.btn-glass {
     border: 1px solid var(--glass-border);
     color: var(--text-pure);
     padding: 16px 36px;
@@ -195,77 +194,19 @@ nav {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.btn-glass { padding: 10px 24px; font-size: 0.85rem; border-radius: 8px; }
+.btn-glass {
+    padding: 10px 24px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+}
 
-.btn-outline:hover, .btn-glass:hover {
+.btn-outline:hover,
+.btn-glass:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: var(--text-pure);
-}
-
-/* --- Stats Grid --- */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-    margin-bottom: 24px;
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 32px;
-}
-
-.coin-id { display: flex; align-items: center; gap: 16px; }
-.coin-id img { width: 36px; height: 36px; }
-.coin-id h4 { font-weight: 700; font-size: 1.1rem; }
-.coin-id span { color: var(--text-muted); font-size: 0.8rem; display: block; }
-
-.change-tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 6px;
-}
-.up { background: rgba(34, 197, 94, 0.1); color: var(--success); }
-.down { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
-
-.stats-grid h2 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-}
-
-.mini-chart {
-    height: 60px !important;
-    margin-top: 24px;
-}
-
-/* --- Main Dashboard --- */
-.main-dashboard {
-    padding: 48px;
-    margin-bottom: 120px;
-}
-
-.dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 48px;
-}
-
-.dashboard-header h3 { font-size: 1.5rem; font-weight: 700; }
-
-.time-filters {
-    display: flex;
-    gap: 8px;
-    background: rgba(255,255,255,0.03);
-    padding: 4px;
-    border-radius: 10px;
 }
 
 .filter-btn {
@@ -282,22 +223,128 @@ nav {
 }
 
 .filter-btn.active {
-    background: var(--text-pure);
-    color: var(--bg-deep);
+    background: var(--accent-neon);
+    color: #000;
+}
+
+/* --- 7. Stats & Market Grid --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+}
+
+.coin-id {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.coin-id img {
+    width: 36px;
+    height: 36px;
+}
+
+.coin-id h4 {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.coin-id span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    display: block;
+}
+
+.change-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.up {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+}
+
+.down {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.stats-grid h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.mini-chart {
+    height: 60px !important;
+    margin-top: 24px;
+}
+
+/* --- 8. Glass Card Component --- */
+.glass-card {
+    background: var(--glass-fill);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: border-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.glass-card:hover {
+    border-color: var(--hover-border);
+}
+
+/* --- 9. Dashboard Section --- */
+.main-dashboard {
+    padding: 48px;
+    margin-bottom: 120px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+.dashboard-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.time-filters {
+    display: flex;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 4px;
+    border-radius: 10px;
 }
 
 .main-chart-wrapper {
     height: 400px;
 }
 
-/* --- Harmonized Brand Sections (Partners & Audit) --- */
-.partners, .security-audit {
+/* --- 10. Partner & Audit Branding --- */
+.partners,
+.security-audit {
     text-align: center;
     padding: 100px 0;
     border-top: 1px solid var(--glass-border);
 }
 
-.partners p, .security-audit p {
+.partners p,
+.security-audit p {
     font-size: 0.75rem;
     letter-spacing: 2px;
     color: var(--text-muted);
@@ -305,7 +352,8 @@ nav {
     text-transform: uppercase;
 }
 
-.partner-logos, .audit-logos {
+.partner-logos,
+.audit-logos {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -313,32 +361,42 @@ nav {
     flex-wrap: wrap;
 }
 
-/* Base style for text-based logos */
-.partner-logos img, .audit-logos img {
-    height: 22px; /* Dikecilkan untuk keseimbangan visual */
+.partner-logos img,
+.audit-logos img {
+    height: 22px;
     width: auto;
     object-fit: contain;
-    filter: brightness(0) invert(1); /* Logo menjadi putih bersih */
+    filter: brightness(0) invert(1);
     opacity: 0.3;
     transition: all 0.4s ease;
 }
 
-/* Special adjustment for circular/square logos (Bitcoin, Certik) */
-/* Tambahkan class logo-sm di HTML Anda pada logo BTC dan Certik */
-.partner-logos img.logo-sm, 
+.partner-logos img.logo-sm,
 .audit-logos img.logo-sm {
-    height: 38px; 
+    height: 38px;
 }
 
-.partner-logos img:hover, .audit-logos img:hover {
+.partner-logos img:hover,
+.audit-logos img:hover {
     opacity: 0.9;
     transform: translateY(-2px);
 }
 
-/* --- Features Section --- */
-.features { padding: 120px 0; }
-.section-title { text-align: center; margin-bottom: 80px; }
-.section-title h2 { font-size: 3rem; font-weight: 800; letter-spacing: -1.5px; }
+/* --- 11. Features Section --- */
+.features {
+    padding: 120px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-title h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
 
 .features-grid {
     display: grid;
@@ -346,43 +404,96 @@ nav {
     gap: 24px;
 }
 
-.f-card { text-align: left; padding: 48px; }
-.f-icon { font-size: 2.5rem; display: block; margin-bottom: 32px; }
-.f-card h3 { margin-bottom: 16px; font-weight: 700; }
-.f-card p { color: var(--text-muted); font-size: 0.95rem; }
+.f-card {
+    text-align: left;
+    padding: 48px;
+}
 
-/* --- Stats Counter --- */
+.f-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 32px;
+}
+
+.f-card h3 {
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.f-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* --- 12. Counter Statistics --- */
 .stats-counter {
     padding: 80px 0;
     border-top: 1px solid var(--glass-border);
     border-bottom: 1px solid var(--glass-border);
-    background: rgba(255,255,255,0.01);
+    background: rgba(255, 255, 255, 0.01);
 }
+
 .stats-flex {
     display: flex;
     justify-content: space-between;
     text-align: center;
 }
-.stat-item h3 { font-size: 2.5rem; font-weight: 800; margin-bottom: 8px; }
-.stat-item p { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-/* --- Comparison Table --- */
-.comparison { padding: 120px 0; }
-.comparison-wrapper { padding: 0; overflow-x: auto; }
-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
+.stat-item h3 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
 }
-th, td {
+
+.stat-item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- 13. Comparison Table Section --- */
+.comparison {
+    padding: 120px 0;
+}
+
+.comparison-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0; 
+}
+
+table {
+    min-width: 600px;
+    width: 100%;
+}
+
+th,
+td {
     padding: 24px 32px;
     border-bottom: 1px solid var(--glass-border);
 }
-th { font-weight: 700; color: var(--text-pure); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-td { font-size: 0.95rem; color: var(--text-muted); }
-td:nth-child(2) { color: var(--text-pure); font-weight: 600; }
 
-/* Gaya dasar untuk setiap status */
+th {
+    font-weight: 700;
+    color: var(--text-pure);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+td {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+td:nth-child(2) {
+    color: var(--text-pure);
+    font-weight: 600;
+}
+
+/* Status Pills */
 .status-pill {
     padding: 6px 14px;
     border-radius: 8px;
@@ -393,29 +504,30 @@ td:nth-child(2) { color: var(--text-pure); font-weight: 600; }
     gap: 8px;
 }
 
-/* Status Checklist (Hijau) */
 .status-pill.success {
-    background: rgba(34, 197, 94, 0.15); /* Hijau transparan */
-    color: #4ade80; /* Hijau terang */
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
     border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
-/* Status Silang (Merah) */
 .status-pill.error {
-    background: rgba(239, 68, 68, 0.15); /* Merah transparan */
-    color: #f87171; /* Merah terang */
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
     border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
-/* Status Danger/Warning (Kuning) */
 .status-pill.warning {
-    background: rgba(234, 179, 8, 0.15); /* Kuning transparan */
-    color: #fbbf24; /* Kuning terang */
+    background: rgba(234, 179, 8, 0.15);
+    color: #fbbf24;
     border: 1px solid rgba(234, 179, 8, 0.2);
 }
 
-/* --- Roadmap Styles --- */
-.roadmap { padding: 120px 0; position: relative; }
+/* --- 14. Project Roadmap --- */
+.roadmap {
+    padding: 120px 0;
+    position: relative;
+}
+
 .roadmap-container {
     display: flex;
     flex-direction: column;
@@ -425,7 +537,11 @@ td:nth-child(2) { color: var(--text-pure); font-weight: 600; }
     border-left: 1px solid var(--glass-border);
     padding-left: 40px;
 }
-.roadmap-item { position: relative; }
+
+.roadmap-item {
+    position: relative;
+}
+
 .roadmap-dot {
     position: absolute;
     left: -45px;
@@ -435,54 +551,83 @@ td:nth-child(2) { color: var(--text-pure); font-weight: 600; }
     background: white;
     border-radius: 50%;
 }
-.phase { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 8px; }
-.roadmap-content h3 { margin-bottom: 12px; }
 
-/* --- Testimonials Styles --- */
-.testimonials { padding: 120px 0; }
+.phase {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.roadmap-content h3 {
+    margin-bottom: 12px;
+}
+
+/* --- 15. Community Testimonials --- */
+.testimonials {
+    padding: 120px 0;
+}
+
 .testimonial-grid {
     display: grid;
-    /* Menggunakan minmax 300px agar 4 kartu muat dengan proporsional */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
-    border: white;
 }
+
 .t-card {
-padding: 40px; /* Menambah jarak internal agar tidak mepet border */
+    padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     background: rgba(255, 255, 255, 0.03);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 250px; /* Menambah tinggi minimal agar kartu lebih proporsional */
+    min-height: 250px;
     transition: all 0.4s ease;
 }
 
 .t-card:hover {
-    border-color: var(--accent-blue);
+    border-color: var(--accent-neon);
     background: rgba(255, 255, 255, 0.05);
 }
 
 .t-card p {
-font-style: italic;
+    font-style: italic;
     color: var(--text-pure);
-    margin-bottom: 32px; /* Memberikan jarak lebih antara kutipan dan nama user */
+    margin-bottom: 32px;
     font-size: 1.1rem;
     line-height: 1.6;
 }
-.user-meta strong { display: block; font-size: 0.9rem; }
-.user-meta span { font-size: 0.8rem; color: var(--text-muted); }
 
-/* --- FAQ Styles --- */
-.faq { padding: 120px 0; }
+.user-meta strong {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.user-meta span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* --- 16. FAQ Section --- */
+.faq {
+    padding: 120px 0;
+}
+
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Jarak antar kartu FAQ */
+    gap: 20px;
 }
-.faq-item { padding: 20px 32px; cursor: pointer; }
+
+.faq-item {
+    padding: 20px 32px;
+    cursor: pointer;
+}
+
 .faq-item summary {
     list-style: none;
     font-weight: 600;
@@ -493,16 +638,19 @@ font-style: italic;
     padding: 5px 0;
     outline: none;
 }
+
 .faq-item summary::after {
     content: '+';
     font-size: 1.5rem;
     color: var(--text-muted);
     transition: transform 0.3s ease;
 }
+
 .faq-item[open] summary::after {
     content: '−';
     transform: rotate(180deg);
 }
+
 .faq-item p {
     margin-top: 15px;
     color: var(--text-muted);
@@ -513,19 +661,39 @@ font-style: italic;
 }
 
 /* Hover consistency for interactive elements */
-.faq-item:hover, .t-card:hover, table tr:hover { border-color: var(--hover-border); }
+.faq-item:hover,
+.t-card:hover,
+table tr:hover {
+    border-color: var(--hover-border);
+}
 
-/* --- CTA Section --- */
-.cta { padding: 100px 0 160px; }
+/* --- 17. CTA Section --- */
+.cta {
+    padding: 100px 0 160px;
+}
+
 .cta-box {
     text-align: center;
     padding: 100px 40px;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 100%);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
 }
-.cta-box h2 { font-size: 3.5rem; font-weight: 800; margin-bottom: 24px; letter-spacing: -2px; }
-.cta-box p { color: var(--text-muted); margin-bottom: 48px; font-size: 1.1rem; }
 
-/* --- Footer --- */
+.cta-box h2 {
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -2px;
+    overflow-wrap: break-word;
+}
+
+.cta-box p {
+    color: var(--text-muted);
+    margin-bottom: 48px;
+    font-size: 1.1rem;
+}
+
+/* --- 18. Footer --- */
 footer {
     padding: 100px 0 60px;
     border-top: 1px solid var(--glass-border);
@@ -546,18 +714,29 @@ footer {
 
 .footer-links {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Membagi menjadi 4 kolom yang sama rata */
-    gap: 40px; /* Jarak antar kolom */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
 }
-.link-group h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+
+.link-group h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
 .link-group a {
     display: block;
     color: var(--text-muted);
     text-decoration: none;
     font-size: 0.9rem;
     margin-bottom: 12px;
+    transition: color 0.3s ease;
 }
-.link-group a:hover { color: var(--text-pure); }
+
+.link-group a:hover {
+    color: var(--text-pure);
+}
 
 .footer-bottom {
     text-align: center;
@@ -567,19 +746,87 @@ footer {
     border-top: 1px solid var(--glass-border);
 }
 
-/* --- Mobile Responsiveness --- */
+/* --- 19. Enhanced Mobile Responsiveness --- */
+
+/* Hamburger Menu Styles */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-pure);
+    transition: all 0.3s ease;
+}
+
+/* Tablet & Desktop Adjustments (1024px) */
 @media (max-width: 1024px) {
-    .hero h1 { font-size: 3.5rem; }
-    .footer-links { gap: 40px; }
+    .hero h1 { font-size: 3.5rem; letter-spacing: -2px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-links { grid-template-columns: repeat(2, 1fr); gap: 40px; }
     .partner-logos, .audit-logos { gap: 40px; }
 }
 
+/* Mobile & Tablet Transition (768px) */
 @media (max-width: 768px) {
-    .container { padding: 0 20px; }
-    .hero h1 { font-size: 2.5rem; }
-    .nav-links { display: none; }
+    .container { padding: 0 24px; }
+    
+    /* Navigation Mobile Drawer */
+    .menu-toggle { display: flex; }
+    
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        flex-direction: column;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(20px);
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        transition: 0.4s ease;
+        padding-top: 100px;
+        gap: 40px;
+    }
+
+    .nav-links.active { left: 0; }
+
+    /* Hero & Layout */
+    .hero { padding: 100px 0 60px; }
+    .hero h1 { font-size: 2.8rem; letter-spacing: -1.5px; }
+    .hero-subtext { font-size: 1.1rem; }
+    .hero-btns { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto 48px; }
+    
+    .main-dashboard { padding: 24px; }
+    .dashboard-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    
     .stats-flex { flex-direction: column; gap: 40px; }
     .main-chart-wrapper { height: 300px; }
+    
     .footer-content { flex-direction: column; gap: 60px; }
-    th, td { padding: 16px; font-size: 0.8rem; }
+    th, td { padding: 16px 12px; font-size: 0.8rem; }
+}
+
+/* Small Smartphone (480px) */
+@media (max-width: 480px) {
+    .hero h1 { font-size: 2.2rem; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .section-title h2 { font-size: 2.2rem; }
+    .footer-links { grid-template-columns: 1fr; }
+    .stat-item h3 { font-size: 2rem; }
+    
+    /* Memastikan tabel perbandingan tidak rusak */
+    .status-pill { padding: 4px 10px; font-size: 0.75rem; }
+    .t-card { padding: 24px; min-height: auto; }
+}
+
+/* X-Small Phone (320px) */
+@media (max-width: 320px) {
+    .hero h1 { font-size: 1.8rem; }
+    .btn-primary, .btn-outline { padding: 12px 24px; font-size: 0.85rem; }
 }
