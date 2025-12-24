@@ -32,7 +32,7 @@
             <li><a href="#features">Fitur</a></li>
             <li><a href="#roadmap">Roadmap</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#" class="btn-glass">Hubungkan Dompet</a></li>
+            <li><a href="#connect" class="btn-glass">Hubungkan Dompet</a></li>
         </ul>
         </div>
     </nav>
@@ -57,7 +57,7 @@
                             <span>BTC/USD</span>
                         </div>
                     </div>
-                    <span class="change-tag up">+2.4%</span>
+                    <span id="btc-change" class="change-tag">+2.4%</span>
                 </div>
                 <h2 id="btc-price">$ --,---</h2>
                 <canvas id="chartBTC" class="mini-chart"></canvas>
@@ -72,7 +72,7 @@
                             <span>ETH/USD</span>
                         </div>
                     </div>
-                    <span class="change-tag down">-1.2%</span>
+                    <span id="eth-change" class="change-tag">-1.2%</span>
                 </div>
                 <h2 id="eth-price">$ --,---</h2>
                 <canvas id="chartETH" class="mini-chart"></canvas>
@@ -87,7 +87,7 @@
                             <span>SOL/USD</span>
                         </div>
                     </div>
-                    <span class="change-tag up">+5.8%</span>
+                    <span id="sol-change" class="change-tag">+5.8%</span>
                 </div>
                 <h2 id="sol-price">$ --,---</h2>
                 <canvas id="chartSOL" class="mini-chart"></canvas>
@@ -350,6 +350,61 @@
                 </details>
             </div>
         </section>
+
+        <section id="connect" class="connect-wallet-section">
+    <div class="container">
+        <div class="glass-card connect-container">
+            <div class="connect-header">
+                <span class="badge-neon">Web3 Ready</span>
+                <h2>Hubungkan Dompet Anda</h2>
+                <p>Mulailah perjalanan kripto Anda dengan menghubungkan dompet digital. Kelola aset, pantau portofolio, dan akses fitur premium CryptoVisual.</p>
+            </div>
+
+            <div class="wallet-grid">
+    <button class="wallet-card">
+        <div class="wallet-icon">
+            <img src="images/metamask.png" alt="MetaMask">
+        </div>
+        <div class="wallet-info">
+            <h3>MetaMask</h3>
+            <span>Browser Extension</span>
+        </div>
+        <div class="arrow-icon">→</div>
+    </button>
+
+    <button class="wallet-card">
+        <div class="wallet-icon">
+            <img src="images/walletconnect.png" alt="WalletConnect">
+        </div>
+        <div class="wallet-info">
+            <h3>WalletConnect</h3>
+            <span>Mobile App Login</span>
+        </div>
+        <div class="arrow-icon">→</div>
+    </button>
+
+    <button class="wallet-card">
+        <div class="wallet-icon">
+            <img src="images/coinbase.png" alt="Coinbase">
+        </div>
+        <div class="wallet-info">
+            <h3>Coinbase</h3>
+            <span>Safe Custody</span>
+        </div>
+        <div class="arrow-icon">→</div>
+    </button>
+</div>
+
+            <div class="connect-footer">
+                <p>Belum memiliki dompet? <a href="#faq">Pelajari cara membuatnya</a></p>
+                <div class="security-tag">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/shield.png" alt="Safe">
+                    <span>Enkripsi AES-256 Terjamin</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     </main>
 
     <footer>
@@ -392,7 +447,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
