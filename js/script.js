@@ -162,7 +162,6 @@ async function updatePortfolioUI() {
     if (!prices) {
         prices = {};
         MOCK_DATA.forEach(coin => {
-            // Simulasi konversi sederhana jika IDR (Hanya untuk fallback darurat)
             const multiplier = currentCurrency === 'idr' ? 15000 : 1;
             prices[coin.id] = { [currentCurrency]: coin.current_price * multiplier };
         });
@@ -313,7 +312,9 @@ const MOCK_DATA = [
 
 // --- SERVICE WORKER REGISTRATION ---
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js')
-    .then(() => console.log('Service Worker Registered'))
-    .catch(err => console.log('Service Worker Failed', err));
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('SW Active:', reg.scope))
+            .catch(err => console.log('SW Discovery Failed:', err));
+    });
 }

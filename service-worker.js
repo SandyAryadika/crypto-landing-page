@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cryptovisual-v1';
+const CACHE_NAME = 'cryptovisual-v2';
 const assets = [
   '/',
   '/index.html',
@@ -8,7 +8,6 @@ const assets = [
   '/images/icon.png',
 ];
 
-// Tahap Install: Menyimpan file ke cache agar bisa dibuka saat offline
 self.addEventListener('install', evt => {
   evt.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -17,7 +16,6 @@ self.addEventListener('install', evt => {
   );
 });
 
-// Tahap Fetch: Mengambil data dari cache jika sedang tidak ada internet
 self.addEventListener('fetch', evt => {
   evt.respondWith(
     caches.match(evt.request).then(cacheRes => {
